@@ -1,0 +1,7 @@
+#undef COMBO_HOOK
+#define COMBO_HOOK require-prior-idle-ms = <150>;
+
+#define COMBO_TERM_QUICK 40
+
+/* horizontal: left hand */
+ZMK_COMBO(esc,      &kp ESC,          15 16,          ALL, COMBO_TERM_QUICK)
