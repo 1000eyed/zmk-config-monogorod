@@ -4,16 +4,28 @@
 
 #include "../../../../zmk-nodefree-config/helper.h"
 
-#define QWERTY 0
+#define COLEMAK 0
+#define QWERTY 1
+
 
 #include "combos.dtsi"
 
 ZMK_LAYER(
     QWERTY,
-    &kp N1     &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &kp LC(LA(DEL))
+    &kp N1     &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &kp LG(L)
     &kp ESC    &kp Q      &kp W       &kp E       &kp R       &kp T       &kp Y      &kp U       &kp I       &kp O       &kp P         &kp ENTER      &kp PG_UP
     &kp TAB    &kp A      &kp S       &kp D       &kp F       &kp G       &kp H      &kp J       &kp K       &kp L       &kp SEMI                     &kp PG_DN
     &kp LSHFT  &kp Z      &kp X       &kp C       &kp V       &kp B       &kp N      &kp M       &kp COMMA   &kp DOT     &kp SLASH     &kp UP
+    &kp LCTRL  &kp LGUI   &kp LALT                &kp SPACE   &kp RSHFT              &kp RALT                            &kp LEFT      &kp DOWN       &kp RIGHT,
+    &inc_dec_kp C_VOL_DN C_VOL_UP
+)
+
+ZMK_LAYER(
+    COLEMAK,
+    &kp N1     &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &kp LG(L)
+    &kp ESC    &kp Q      &kp W       &kp F       &kp P       &kp B       &kp J      &kp L       &kp U       &kp Y       &kp SEMI      &kp ENTER      &kp PG_UP
+    &kp TAB    &kp A      &kp R       &kp S       &kp T       &kp G       &kp M      &kp N       &kp E       &kp I       &kp O                        &kp PG_DN
+    &kp LSHFT  &kp Z      &kp X       &kp C       &kp D       &kp V       &kp K      &kp H       &kp COMMA   &kp DOT     &kp SLASH     &kp UP
     &kp LCTRL  &kp LGUI   &kp LALT                &kp SPACE   &kp RSHFT              &kp RALT                            &kp LEFT      &kp DOWN       &kp RIGHT,
     &inc_dec_kp C_VOL_DN C_VOL_UP
 )
