@@ -3,5 +3,34 @@
 
 #define COMBO_TERM_QUICK 40
 
-/* horizontal: left hand */
-ZMK_COMBO(esc,      &kp ESC,          15 16,          ALL, COMBO_TERM_QUICK)
+/*
+┌────┬────┬────┬────┐┌────┬────┬────┬────┐┌────┬────┬────┬────┐ ┌────┐
+│  0 │  1 │  2 │  3 ││  4 │  5 │  6 │  7 ││  8 │  9 │ 10 │ 11 │ │ 12 │
+└────┴────┴────┴────┘└────┴────┴────┴────┘└────┴────┴────┴────┘ └────┘
+┌────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──────┐ ┌────┐
+│ 13 │ 14 │ 15 │ 16 │ 17 │ 18 │ 19 │ 20 │ 21 │ 22 │ 23 │  24  │ │ 25 │
+├────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┐     │ ├────┤
+│  26 │ 27 │ 28 │ 29 │ 30 │ 31 │ 32 │ 33 │ 34 │ 35 │ 36 │     │ │ 37 │
+├─────┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬───┴┬────┘ └────┘
+│  38  │ 39 │ 40 │ 41 │ 42 │ 43 │ 44 │ 45 │ 46 │ 47 │ 48 │ ┌────┐
+├─────┬┴────┼────┴┬───┴────┴────┴────┴────┴───┬┴────┼────┘ │ 49 │
+│  50 │  51 │  52 │ ┌────────────┬──────────┐ │  55 │ ┌────┼────┼────┐
+└─────┴─────┴─────┘ │     53     │     54   │ └─────┘ │ 56 │ 57 │ 58 │
+                    └────────────┴──────────┘         └────┴────┴────┘
+*/
+
+// horizontal: left hand
+ZMK_COMBO(esc,      &kp ESC,      15 16,    ALL, COMBO_TERM_QUICK)
+ZMK_COMBO(enter,    &kp ENTER,    16 17,    ALL, COMBO_TERM_QUICK)
+ZMK_COMBO(tab,      &kp TAB,      28 29,    ALL, COMBO_TERM_QUICK)
+ZMK_COMBO(cut,      &kp LC(X),    40 42,    ALL, COMBO_TERM_QUICK)
+ZMK_COMBO(copy,     &kp LC(INS),  40 41,    ALL, COMBO_TERM_QUICK)
+ZMK_COMBO(paste,    &kp LS(INS),  41 42,    ALL, COMBO_TERM_QUICK)
+
+// Horizontal combos - right hand
+ZMK_COMBO(bspc,     &kp BSPC,       20 21,          ALL, COMBO_TERM_QUICK)
+ZMK_COMBO(del,      &kp DEL,        21 22,          ALL, COMBO_TERM_QUICK)
+
+// layer combos
+ZMK_COMBO(toqwer,   &to QWERTY,  14 17 20 23,        COLEMAK, COMBO_TERM_QUICK)
+ZMK_COMBO(tocole,   &to COLEMAK, 14 17 20 23,         QWERTY, COMBO_TERM_QUICK)
