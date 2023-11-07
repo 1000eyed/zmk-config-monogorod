@@ -6,6 +6,7 @@
 
 #define COLEMAK 0
 #define QWERTY 1
+#define LSHORT 2
 #include "combos.dtsi"
 
 // layer tap settings
@@ -17,15 +18,17 @@
 // sticky layer settings
 &sl {ignore-modifiers; release-after-ms = <800>;};
 
+// grave and escape mod morph
+ZMK_BEHAVIOR(grvEsc, mod_morph, bindings = <&kp ESC>, <&kp GRAVE>; mods = <(MOD_RSFT|MOD_RALT)>; keep-mods = <MOD_RSFT>;)
+
 // bracket mod morphs
 ZMK_BEHAVIOR(jLBrk, mod_morph, bindings = <&kp J>, <&kp LBKT>; mods = <(MOD_RSFT)>;)
 ZMK_BEHAVIOR(nLBrk, mod_morph, bindings = <&kp N>, <&kp LBKT>; mods = <(MOD_RSFT)>;)
 ZMK_BEHAVIOR(kRBrk, mod_morph, bindings = <&kp K>, <&kp RBKT>; mods = <(MOD_RSFT)>;)
 ZMK_BEHAVIOR(eRBrk, mod_morph, bindings = <&kp E>, <&kp RBKT>; mods = <(MOD_RSFT)>;)
 
-// back slash and pipe mod morphs
-ZMK_BEHAVIOR(pipe, mod_morph, bindings = <&kp SLASH>, <&kp PIPE>; mods = <(MOD_RALT)>;)
-ZMK_BEHAVIOR(slashes, mod_morph, bindings = <&pipe>, <&kp BACKSLASH>; mods = <(MOD_RSFT)>;)
+// back slash and pipe mod morph
+ZMK_BEHAVIOR(slashes, mod_morph, bindings = <&kp SLASH>, <&kp BACKSLASH>; mods = <(MOD_RSFT|MOD_RALT)>; keep-mods = <MOD_RSFT>;)
 
 // caps word morph
 ZMK_BEHAVIOR(capsShift, mod_morph, bindings = <&sk RSFT>, <&caps_word>; mods = <(MOD_RSFT)>;)
@@ -35,21 +38,31 @@ ZMK_BEHAVIOR(bootLogout, mod_morph, bindings = <&kp LG(L)>, <&bootloader>; mods 
 
 // layers
 ZMK_LAYER(
-    QWERTY,
-    &kp N1     &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &bootLogout
-    &kp ESC    &kp Q      &kp W       &kp E       &kp R       &kp T       &kp Y      &kp U       &kp I       &kp O       &kp P         &kp SQT        &kp PG_UP
-    &kp TAB    &kp A      &kp S       &kp D       &kp F       &kp G       &kp H      &jLBrk      &kRBrk      &kp L       &kp SEMI                     &kp PG_DN
-    &kp LSHFT  &kp Z      &kp X       &kp C       &kp V       &kp B       &kp N      &kp M       &kp COMMA   &kp DOT     &slashes      &kp UP
-    &kp LCTRL  &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RALT                            &kp LEFT      &kp DOWN       &kp RIGHT,
+    COLEMAK,
+    &kp N1            &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &bootLogout
+    &kp ESC           &kp Q      &kp W       &kp F       &kp P       &kp B       &kp J      &kp L       &kp U       &kp Y       &kp SEMI      &kp SQT        &kp PG_UP
+    &lt LSHORT TAB    &kp A      &kp R       &kp S       &kp T       &kp G       &kp M      &nLBrk      &eRBrk      &kp I       &kp O                        &kp PG_DN
+    &kp LSHFT         &kp Z      &kp X       &kp C       &kp D       &kp V       &kp K      &kp H       &kp COMMA   &kp DOT     &slashes      &kp UP
+    &kp LCTRL         &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RALT                            &kp LEFT      &kp DOWN       &kp RIGHT,
     &inc_dec_kp C_VOL_DN C_VOL_UP
 )
 
 ZMK_LAYER(
-    COLEMAK,
-    &kp N1     &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &bootLogout
-    &kp ESC    &kp Q      &kp W       &kp F       &kp P       &kp B       &kp J      &kp L       &kp U       &kp Y       &kp SEMI      &kp SQT        &kp PG_UP
-    &kp TAB    &kp A      &kp R       &kp S       &kp T       &kp G       &kp M      &nLBrk      &eRBrk      &kp I       &kp O                        &kp PG_DN
-    &kp LSHFT  &kp Z      &kp X       &kp C       &kp D       &kp V       &kp K      &kp H       &kp COMMA   &kp DOT     &slashes      &kp UP
-    &kp LCTRL  &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RALT                            &kp LEFT      &kp DOWN       &kp RIGHT,
+    QWERTY,
+    &kp N1            &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &bootLogout
+    &kp ESC           &kp Q      &kp W       &kp E       &kp R       &kp T       &kp Y      &kp U       &kp I       &kp O       &kp P         &kp SQT        &kp PG_UP
+    &lt LSHORT TAB    &kp A      &kp S       &kp D       &kp F       &kp G       &kp H      &jLBrk      &kRBrk      &kp L       &kp SEMI                     &kp PG_DN
+    &kp LSHFT         &kp Z      &kp X       &kp C       &kp V       &kp B       &kp N      &kp M       &kp COMMA   &kp DOT     &slashes      &kp UP
+    &kp LCTRL         &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RALT                            &kp LEFT      &kp DOWN       &kp RIGHT,
+    &inc_dec_kp C_VOL_DN C_VOL_UP
+)
+
+ZMK_LAYER(
+    LSHORT,
+    &none     &none    &none         &none        &none     &none    &none     &none      &none      &none      &none    &none    &none
+    &none     &none    &kp LA(F4)    &none        &kp F3    &none    &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &none    &none    &none
+    &none     &none    &none         &none        &none     &none    &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &none             &none
+    &none     &none    &none         &kp LC(INS)  &LS(INS)  &none    &none     &none      &none      &none      &none    &none
+    &none     &none    &none                      &none     &none              &none                            &none    &none    &none
     &inc_dec_kp C_VOL_DN C_VOL_UP
 )
