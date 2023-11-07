@@ -19,7 +19,7 @@
 &sl {ignore-modifiers; release-after-ms = <800>;};
 
 // grave and escape mod morph
-ZMK_BEHAVIOR(grvEsc, mod_morph, bindings = <&kp ESC>, <&kp GRAVE>; mods = <(MOD_RSFT|MOD_RALT)>; keep-mods = <MOD_RSFT>;)
+ZMK_BEHAVIOR(grvEsc, mod_morph, bindings = <&kp ESC>, <&kp GRAVE>; mods = <(MOD_RSFT|MOD_LSFT)>; keep-mods = <MOD_LSFT>;)
 
 // bracket mod morphs
 ZMK_BEHAVIOR(jLBrk, mod_morph, bindings = <&kp J>, <&kp LBKT>; mods = <(MOD_RSFT)>;)
@@ -59,10 +59,10 @@ ZMK_LAYER(
 
 ZMK_LAYER(
     LSHORT,
-    &none     &none    &none         &none        &none     &none    &none     &none      &none      &none      &none    &none    &none
-    &none     &none    &kp LA(F4)    &none        &kp F3    &none    &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &none    &none    &none
-    &none     &none    &none         &none        &none     &none    &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &none             &none
-    &none     &none    &none         &kp LC(INS)  &LS(INS)  &none    &none     &none      &none      &none      &none    &none
-    &none     &none    &none                      &none     &none              &none                            &none    &none    &none
+    &none     &none    &none         &none        &none        &none    &none     &none      &none      &none      &none    &none    &none
+    &none     &none    &kp LA(F4)    &none        &kp F3       &none    &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &none    &none    &none
+    &none     &none    &none         &none        &none        &none    &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &none             &none
+    &none     &none    &none         &kp LC(INS)  &kp LS(INS)  &none    &none     &none      &none      &none      &none    &none
+    &none     &none    &none                      &none        &none              &none                            &none    &none    &none
     &inc_dec_kp C_VOL_DN C_VOL_UP
 )
