@@ -14,9 +14,6 @@
 // sticky key settings
 &sk {release-after-ms = <800>; quick-release;};
 
-// caps word settings
-&caps_word {ignore-modifiers;};
-
 // sticky layer settings
 &sl {ignore-modifiers; release-after-ms = <800>;};
 
