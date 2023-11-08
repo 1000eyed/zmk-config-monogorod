@@ -7,8 +7,7 @@
 #define COLEMAK 0
 #define QWERTY 1
 #define LSHORT 2
-#define BLE 3
-#define FNUM 4
+#define FNUM 3
 #include "combos.dtsi"
 
 // layer tap settings
@@ -56,7 +55,7 @@ ZMK_BEHAVIOR(btEqual, mod_morph, bindings = <&kp EQUAL>, <&bt BT_CLR>; mods = <(
 ZMK_LAYER(
     COLEMAK,
     &bt1              &bt2       &bt3        &bt4        &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &bt0        &kp MINUS     &btEqual       &bootLogout
-    &grvEsc           &kp Q      &kp W       &kp F       &kp P       &kp B       &kp J      &lLPar      &uRPar      &kp Y       &kp SEMI      &kp SQT        &kp LC(LEFT)
+    &grvEsc           &kp Q      &kp W       &kp F       &kp P       &kp B       &kp J      &lLPar      &uRPar      &kp Y       &kp SEMI      &kp SQT        &kp PG_UP
     &lt LSHORT TAB    &kp A      &kp R       &kp S       &kp T       &kp G       &kp M      &nLBrk      &eRBrk      &kp I       &kp O                        &kp PG_DN
     &kp LSHFT         &kp Z      &kp X       &kp C       &kp D       &kp V       &kp K      &kp H       &kp COMMA   &kp DOT     &slashes      &kp UP
     &kp LCTRL         &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RCTRL                           &kp LEFT      &kp DOWN       &kp RIGHT,
@@ -70,6 +69,16 @@ ZMK_LAYER(
     &lt LSHORT TAB    &kp A      &kp S       &kp D       &kp F       &kp G       &kp H      &jLBrk      &kRBrk      &kp L       &kp SEMI                     &kp PG_DN
     &kp LSHFT         &kp Z      &kp X       &kp C       &kp V       &kp B       &kp N      &kp M       &kp COMMA   &kp DOT     &slashes      &kp UP
     &kp LCTRL         &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RCTRL                           &kp LEFT      &kp DOWN       &kp RIGHT,
+    &inc_dec_kp C_VOL_DN C_VOL_UP
+)
+
+ZMK_LAYER(
+    LSHORT,
+    &none      &none     &none         &none        &none        &none    &none     &none         &none          &none      &none    &none    &none
+    &none      &none     &kp LA(F4)    &none        &kp F3       &none    &kp HOME  &kp LC(LEFT)  &kp LC(RIGHT)  &kp END    &none    &none    &none
+    &none      &none     &none         &none        &none        &none    &kp LEFT  &kp DOWN      &kp UP         &kp RIGHT  &none             &none
+    &kp LSHFT  &none     &none         &kp LC(INS)  &kp LS(INS)  &none    &none     &none         &none          &none      &none    &none
+    &kp LCTRL  &kp LGUI  &kp LALT                   &none        &none              &none                                   &none    &none    &none,
     &inc_dec_kp C_VOL_DN C_VOL_UP
 )
 
