@@ -32,5 +32,6 @@ ZMK_COMBO(bspc,     &kp BSPC,       20 21,          ALL, COMBO_TERM_QUICK)
 ZMK_COMBO(del,      &kp DEL,        21 22,          ALL, COMBO_TERM_QUICK)
 
 // layer combos
-ZMK_COMBO(toqwer,   &to QWERTY,  14 17 20 23,        COLEMAK, COMBO_TERM_QUICK)
-ZMK_COMBO(tocole,   &to COLEMAK, 14 17 20 23,         QWERTY, COMBO_TERM_QUICK)
+ZMK_COMBO(toqwer,   &to QWERTY,      14 15,    ALL, COMBO_TERM_QUICK)
+ZMK_COMBO(tocole,   &to COLEMAK,     27 28,    ALL, COMBO_TERM_QUICK)
+ZMK_COMBO(tofnum,   &to FNUM,        39 40,    ALL, COMBO_TERM_QUICK)
