@@ -7,6 +7,8 @@
 #define COLEMAK 0
 #define QWERTY 1
 #define LSHORT 2
+#define BLE 3
+#define FNUM 4
 #include "combos.dtsi"
 
 // layer tap settings
@@ -27,42 +29,69 @@ ZMK_BEHAVIOR(nLBrk, mod_morph, bindings = <&kp N>, <&kp LBKT>; mods = <(MOD_RSFT
 ZMK_BEHAVIOR(kRBrk, mod_morph, bindings = <&kp K>, <&kp RBKT>; mods = <(MOD_RSFT)>;)
 ZMK_BEHAVIOR(eRBrk, mod_morph, bindings = <&kp E>, <&kp RBKT>; mods = <(MOD_RSFT)>;)
 
+// parentheses mod morphs
+ZMK_BEHAVIOR(uLPar, mod_morph, bindings = <&kp U>, <&kp LPAR>; mods = <(MOD_RSFT)>;)
+ZMK_BEHAVIOR(lLPar, mod_morph, bindings = <&kp L>, <&kp LPAR>; mods = <(MOD_RSFT)>;)
+ZMK_BEHAVIOR(iRPar, mod_morph, bindings = <&kp I>, <&kp RPAR>; mods = <(MOD_RSFT)>;)
+ZMK_BEHAVIOR(uRPar, mod_morph, bindings = <&kp U>, <&kp RPAR>; mods = <(MOD_RSFT)>;)
+
 // back slash and pipe mod morph
-ZMK_BEHAVIOR(slashes, mod_morph, bindings = <&kp SLASH>, <&kp BACKSLASH>; mods = <(MOD_RSFT|MOD_RALT)>; keep-mods = <MOD_RSFT>;)
+ZMK_BEHAVIOR(slashes, mod_morph, bindings = <&kp SLASH>, <&kp BACKSLASH>; mods = <(MOD_RSFT|MOD_RCTL)>; keep-mods = <MOD_RSFT>;)
 
 // caps word morph
 ZMK_BEHAVIOR(capsShift, mod_morph, bindings = <&sk RSFT>, <&caps_word>; mods = <(MOD_RSFT)>;)
 
 // bootloader and logout mod morphs
-ZMK_BEHAVIOR(bootLogout, mod_morph, bindings = <&kp LG(L)>, <&bootloader>; mods = <(MOD_RALT)>;)
+ZMK_BEHAVIOR(bootLogout, mod_morph, bindings = <&kp LG(L)>, <&bootloader>; mods = <(MOD_RCTL)>;)
+
+// BLE profiles and BLE clear mod morphs
+ZMK_BEHAVIOR(bt0, mod_morph, bindings = <&kp N0>, <&bt BT_SEL 0>; mods = <(MOD_RCTL)>;)
+ZMK_BEHAVIOR(bt1, mod_morph, bindings = <&kp N1>, <&bt BT_SEL 1>; mods = <(MOD_RCTL)>;)
+ZMK_BEHAVIOR(bt2, mod_morph, bindings = <&kp N2>, <&bt BT_SEL 2>; mods = <(MOD_RCTL)>;)
+ZMK_BEHAVIOR(bt3, mod_morph, bindings = <&kp N3>, <&bt BT_SEL 3>; mods = <(MOD_RCTL)>;)
+ZMK_BEHAVIOR(bt4, mod_morph, bindings = <&kp N4>, <&bt BT_SEL 4>; mods = <(MOD_RCTL)>;)
+ZMK_BEHAVIOR(btEqual, mod_morph, bindings = <&kp EQUAL>, <&bt BT_CLR>; mods = <(MOD_RCTL)>;)
 
 // layers
 ZMK_LAYER(
     COLEMAK,
-    &kp N1            &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &bootLogout
-    &grvEsc           &kp Q      &kp W       &kp F       &kp P       &kp B       &kp J      &kp L       &kp U       &kp Y       &kp SEMI      &kp SQT        &kp PG_UP
+    &bt1              &bt2       &bt3        &bt4        &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &bt0        &kp MINUS     &btEqual       &bootLogout
+    &grvEsc           &kp Q      &kp W       &kp F       &kp P       &kp B       &kp J      &lLPar      &uRPar      &kp Y       &kp SEMI      &kp SQT        &kp LC(LEFT)
     &lt LSHORT TAB    &kp A      &kp R       &kp S       &kp T       &kp G       &kp M      &nLBrk      &eRBrk      &kp I       &kp O                        &kp PG_DN
     &kp LSHFT         &kp Z      &kp X       &kp C       &kp D       &kp V       &kp K      &kp H       &kp COMMA   &kp DOT     &slashes      &kp UP
-    &kp LCTRL         &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RALT                            &kp LEFT      &kp DOWN       &kp RIGHT,
+    &kp LCTRL         &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RCTRL                           &kp LEFT      &kp DOWN       &kp RIGHT,
     &inc_dec_kp C_VOL_DN C_VOL_UP
 )
 
 ZMK_LAYER(
     QWERTY,
-    &kp N1            &kp N2     &kp N3      &kp N4      &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &kp N0      &kp MINUS     &kp EQUAL      &bootLogout
-    &grvEsc           &kp Q      &kp W       &kp E       &kp R       &kp T       &kp Y      &kp U       &kp I       &kp O       &kp P         &kp SQT        &kp PG_UP
+    &bt1              &bt2       &bt3        &bt4        &kp N5      &kp N6      &kp N7     &kp N8      &kp N9      &bt0        &kp MINUS     &btEqual       &bootLogout
+    &grvEsc           &kp Q      &kp W       &kp E       &kp R       &kp T       &kp Y      &uLPar      &iRPar      &kp O       &kp P         &kp SQT        &kp PG_UP
     &lt LSHORT TAB    &kp A      &kp S       &kp D       &kp F       &kp G       &kp H      &jLBrk      &kRBrk      &kp L       &kp SEMI                     &kp PG_DN
     &kp LSHFT         &kp Z      &kp X       &kp C       &kp V       &kp B       &kp N      &kp M       &kp COMMA   &kp DOT     &slashes      &kp UP
-    &kp LCTRL         &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RALT                            &kp LEFT      &kp DOWN       &kp RIGHT,
+    &kp LCTRL         &kp LGUI   &kp LALT                &kp SPACE   &capsShift             &kp RCTRL                           &kp LEFT      &kp DOWN       &kp RIGHT,
     &inc_dec_kp C_VOL_DN C_VOL_UP
 )
 
 ZMK_LAYER(
-    LSHORT,
-    &none     &none    &none         &none        &none        &none    &none     &none      &none      &none      &none    &none    &none
-    &none     &none    &kp LA(F4)    &none        &kp F3       &none    &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &none    &none    &none
-    &none     &none    &none         &none        &none        &none    &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &none             &none
-    &none     &none    &none         &kp LC(INS)  &kp LS(INS)  &none    &none     &none      &none      &none      &none    &none
-    &none     &none    &none                      &none        &none              &none                            &none    &none    &none,
+    FNUM,
+    &none            &none      &none       &none        &none       &none      &none           &none       &none       &none       &none          &none    &none
+    &grvEsc          &kp F7     &kp F8      &kp F9       &kp F12     &none      &kp KP_NLCK     &kp KP_N7   &kp KP_N8   &kp KP_N9   &none          &none    &none
+    &lt LSHORT TAB   &kp F4     &kp F5      &kp F6       &kp F11     &none      &kp KP_MULTIPLY &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_DIVIDE           &none
+    &kp LSHFT        &kp F1     &kp F2      &kp F3       &kp F10     &none      &kp KP_PLUS     &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_MINUS   &kp UP
+    &kp LCTRL        &kp LGUI   &kp LALT                 &kp SPACE   &kp KP_N0                  &kp KP_DOT                          &kp LEFT       &kp DOWN &kp RIGHT,
     &inc_dec_kp C_VOL_DN C_VOL_UP
 )
+
+/* dummy layer for copy and paste
+ZMK_LAYER(
+    NAME,
+    &none          &none      &none       &none        &none       &none      &none      &none      &none      &none      &none    &none    &none
+    &none          &none      &none       &none        &none       &none      &none      &none      &none      &none      &none    &none    &none
+    &none          &none      &none       &none        &none       &none      &none      &none      &none      &none      &none             &none
+    &kp LSHFT      &none      &none       &none        &none       &none      &none      &none      &none      &none      &none    &none
+    &kp LCTRL      &kp LGUI   &kp LALT                 &none       &none                 &none                            &none    &none    &none,
+    &inc_dec_kp C_VOL_DN C_VOL_UP
+)
+*/
+
